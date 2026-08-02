@@ -1,109 +1,224 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="Loan Approval Prediction - Random forest over 614 loan applications with label-encoded categoricals">
-  <title>Loan Approval Prediction</title>
-
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="Loan Approval Prediction header: application cards glide into a random-forest decision diamond, three trees vote, and each card forks into an approved or rejected stream">
+  <title>Loan Approval Prediction &#8212; ShadowFox Task 2</title>
   <defs>
-    <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#14181f"/>
-      <stop offset="0.55" stop-color="#1a1a19"/>
-      <stop offset="1" stop-color="#101319"/>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101319"/>
+      <stop offset="0.55" stop-color="#14181f"/>
+      <stop offset="1" stop-color="#191712"/>
     </linearGradient>
-    <linearGradient id="streamFade" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0"    stop-color="#d99b1c" stop-opacity="0"/>
-      <stop offset="0.18" stop-color="#d99b1c" stop-opacity="0.85"/>
-      <stop offset="0.75" stop-color="#f5d78e" stop-opacity="0.95"/>
-      <stop offset="1"    stop-color="#f5d78e" stop-opacity="1"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#f5d78e" stop-opacity="0.5"/>
-      <stop offset="1" stop-color="#f5d78e" stop-opacity="0"/>
+    <radialGradient id="glowGrad" gradientUnits="userSpaceOnUse" cx="840" cy="160" r="270">
+      <stop offset="0" stop-color="#d99b1c" stop-opacity="0.26"/>
+      <stop offset="0.55" stop-color="#d99b1c" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#d99b1c" stop-opacity="0"/>
     </radialGradient>
-    <clipPath id="card"><rect width="1200" height="300" rx="16"/></clipPath>
+    <linearGradient id="dGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#42300f"/>
+      <stop offset="1" stop-color="#20190c"/>
+    </linearGradient>
+    <clipPath id="clipR"><rect x="2" y="2" width="1196" height="296" rx="16"/></clipPath>
+    <filter id="soft" x="-90%" y="-90%" width="280%" height="280%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
   </defs>
 
   <style>
-    .ink   { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-    .title { font-size: 44px; font-weight: 700; fill: #ffffff; letter-spacing: -0.5px; }
-    .sub   { font-size: 16.5px; font-weight: 400; fill: #c3c2b7; }
-    .tag   { font-size: 12.5px; font-weight: 600; fill: #f5d78e; letter-spacing: 1.6px; }
-    .val   { font-size: 19px; font-weight: 700; fill: #ffffff; }
-    .lab   { font-size: 11px; font-weight: 500; fill: #898781; letter-spacing: 0.3px; }
-
-    .stream {
-      fill: none; stroke: url(#streamFade); stroke-width: 1.6; stroke-linecap: round;
-      stroke-dasharray: 7 26; animation: flow 3.2s linear infinite;
-    }
-    @keyframes flow { to { stroke-dashoffset: -330; } }
-
-    .rise { opacity: 0; animation: rise 0.9s cubic-bezier(.2,.7,.3,1) forwards; }
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .pulse { animation: pulse 3.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-    @keyframes pulse {
-      0%, 100% { opacity: 0.35; transform: scale(0.82); }
-      50%      { opacity: 1;    transform: scale(1.12); }
-    }
-
-    .blink { animation: blink 3.2s ease-in-out infinite; }
-    @keyframes blink { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
-
-    @media (prefers-reduced-motion: reduce) {
-      .stream { animation: none; stroke-dasharray: none; stroke-opacity: 0.55; }
-      .rise   { animation: none; opacity: 1; }
-      .pulse  { animation: none; opacity: 0.9; }
-      .blink  { animation: none; opacity: 0.9; }
+    text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+    .mono{font-family:ui-monospace,"Cascadia Code",Consolas,monospace}
+    .enter{animation:rise .7s cubic-bezier(.2,.7,.3,1) both}
+    .e1{animation-delay:.05s}.e2{animation-delay:.16s}.e3{animation-delay:.27s}
+    .e4{animation-delay:.4s}.e5{animation-delay:.32s}
+    @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+    .drawLine{animation:draw .8s ease-out .55s both}
+    @keyframes draw{from{stroke-dashoffset:120}to{stroke-dashoffset:0}}
+    .flow{animation:flowDash 1.25s linear infinite}
+    @keyframes flowDash{to{stroke-dashoffset:-28}}
+    .cIn{animation:cardTravel 7.5s linear infinite}
+    .cIn1{animation-delay:0s}.cIn2{animation-delay:-5s}.cIn3{animation-delay:-2.5s}
+    @keyframes cardTravel{0%{transform:translateX(0);opacity:0}3%{opacity:1}20.5%{opacity:1}23.5%{transform:translateX(320px);opacity:0}100%{transform:translateX(320px);opacity:0}}
+    .dCore{animation:dPulse 2.5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+    @keyframes dPulse{0%,58%{transform:scale(1)}70%{transform:scale(1.14)}84%,100%{transform:scale(1)}}
+    .dRing{animation:ringPing 2.5s ease-out infinite;transform-box:fill-box;transform-origin:center}
+    @keyframes ringPing{0%{opacity:0;transform:scale(.5)}62%{opacity:0;transform:scale(.5)}68%{opacity:.6}100%{opacity:0;transform:scale(1.75)}}
+    .comet{animation:cometGo 7.5s linear infinite}
+    .cmA{animation-delay:-5.6s}.cmB{animation-delay:-3.1s}.cmC{animation-delay:-.6s}
+    @keyframes cometGo{0%{stroke-dashoffset:40}12%{stroke-dashoffset:-360}100%{stroke-dashoffset:-360}}
+    .outGo{animation-duration:7.5s;animation-timing-function:cubic-bezier(.33,.55,.45,1);animation-iteration-count:infinite}
+    .outA{animation-name:goUp}
+    .outB{animation-name:goDown;animation-delay:-5s}
+    .outC{animation-name:goUp;animation-delay:-2.5s}
+    @keyframes goUp{0%,25%{opacity:0;transform:translate(0,0)}27.5%{opacity:1;transform:translate(22px,-4px)}46%{opacity:1;transform:translate(235px,-44px)}49%,100%{opacity:0;transform:translate(250px,-48px)}}
+    @keyframes goDown{0%,25%{opacity:0;transform:translate(0,0)}27.5%{opacity:1;transform:translate(22px,4px)}46%{opacity:1;transform:translate(235px,44px)}49%,100%{opacity:0;transform:translate(250px,48px)}}
+    .badge{animation:badgePop 7.5s ease-out infinite;transform-box:fill-box;transform-origin:center}
+    .bA{animation-delay:0s}.bB{animation-delay:-5s}.bC{animation-delay:-2.5s}
+    @keyframes badgePop{0%,28.5%{opacity:0;transform:scale(0)}31.5%{opacity:1;transform:scale(1.35)}34%{transform:scale(1)}100%{opacity:1;transform:scale(1)}}
+    .bRing{animation:bRingPing 7.5s ease-out infinite;transform-box:fill-box;transform-origin:center}
+    @keyframes bRingPing{0%,29%{opacity:0;transform:scale(.5)}33%{opacity:.65;transform:scale(.9)}45%,100%{opacity:0;transform:scale(2)}}
+    .tree{animation:treeVote 2.5s ease-in-out infinite;transform-box:fill-box;transform-origin:center bottom}
+    .t2{animation-delay:.25s}.t3{animation-delay:.5s}
+    @keyframes treeVote{0%,30%{transform:scale(1)}36%{transform:scale(1.12)}44%,100%{transform:scale(1)}}
+    .haloG{animation:haloGo 7.5s ease-in-out infinite}
+    .haloR{animation:haloRe 7.5s ease-in-out infinite}
+    @keyframes haloGo{0%,21%{opacity:0}23.5%{opacity:.5}28%{opacity:.5}31%{opacity:0}86.5%{opacity:0}89%{opacity:.5}94%{opacity:.5}97%,100%{opacity:0}}
+    @keyframes haloRe{0%,54%{opacity:0}56.5%{opacity:.5}61%{opacity:.5}64%,100%{opacity:0}}
+    .txtA{animation:txtApprove 7.5s ease-in-out infinite}
+    .txtR{animation:txtReject 7.5s ease-in-out infinite}
+    @keyframes txtApprove{0%,52%{opacity:.92}56%{opacity:0}87%{opacity:0}91%,100%{opacity:.92}}
+    @keyframes txtReject{0%,52%{opacity:0}56%{opacity:.92}87%{opacity:.92}91%,100%{opacity:0}}
+    .bgGlow{animation:glowBreathe 7.5s ease-in-out infinite}
+    @keyframes glowBreathe{0%,100%{opacity:.5}50%{opacity:.85}}
+    .node{animation:nodePulse 2.5s ease-in-out infinite}
+    @keyframes nodePulse{0%,24%{opacity:.45}38%{opacity:1}58%,100%{opacity:.45}}
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important}
+      .enter{opacity:1 !important;transform:none !important}
+      .drawLine{stroke-dashoffset:0 !important}
+      .cIn1{opacity:1 !important;transform:translateX(160px) !important}
+      .cIn2,.cIn3{opacity:0 !important}
+      .outA{opacity:1 !important;transform:translate(150px,-29px) !important}
+      .outB{opacity:1 !important;transform:translate(150px,29px) !important}
+      .outC{opacity:0 !important}
+      .badge{opacity:1 !important;transform:scale(1) !important}
+      .bRing,.dRing{opacity:0 !important}
+      .haloG{opacity:.4 !important}
+      .haloR{opacity:0 !important}
+      .txtA{opacity:.92 !important}
+      .txtR{opacity:0 !important}
+      .tree{transform:scale(1) !important}
+      .node{opacity:.8 !important}
     }
   </style>
 
-  <g clip-path="url(#card)">
-    <rect width="1200" height="300" fill="url(#surface)"/>
-    <circle cx="1035" cy="150" r="200" fill="url(#glow)" class="blink"/>
+  <!-- card -->
+  <rect x="2" y="2" width="1196" height="296" rx="16" fill="url(#bgGrad)"/>
+  <g clip-path="url(#clipR)">
+    <circle class="bgGlow" cx="840" cy="160" r="270" fill="url(#glowGrad)"/>
 
-    <!-- animated flow lines -->
-    <path class="stream" d="M0 96 C 300 96, 420 62, 760 62 S 1010 96, 1200 96"/>
-    <path class="stream" style="animation-duration:4.1s" d="M0 150 C 340 150, 470 150, 780 150 S 1030 150, 1200 150"/>
-    <path class="stream" style="animation-duration:2.7s" d="M0 206 C 300 206, 420 240, 760 240 S 1010 206, 1200 206"/>
+    <!-- ============ TEXT BLOCK (left) ============ -->
+    <text class="enter e1" x="60" y="88" font-size="12.5" font-weight="600" letter-spacing="1.6" fill="#d99b1c">SHADOWFOX TASK 2 &#183; CLASSIFICATION</text>
+    <text class="enter e2" x="60" y="138" font-size="44" font-weight="700" fill="#ffffff" letter-spacing="-0.5">Loan Approval</text>
+    <text class="enter e3" x="60" y="184" font-size="44" font-weight="700" fill="#ffffff" letter-spacing="-0.5">Prediction</text>
+    <line class="drawLine" x1="60" y1="203" x2="180" y2="203" stroke="#d99b1c" stroke-width="3" stroke-linecap="round" stroke-dasharray="120" stroke-dashoffset="120"/>
+    <text class="enter e4" x="60" y="238" font-size="16" fill="#c3c2b7">Random forest &#183; 614 applications &#183; <tspan fill="#34d17b" font-weight="600">78.05%</tspan> vs <tspan fill="#e26d6d">68.73%</tspan> baseline</text>
 
-    <circle class="pulse" cx="880" cy="150" r="4.5" fill="#f5d78e" style="animation-delay:0s"/>
-    <circle class="pulse" cx="960" cy="150" r="4.5" fill="#f5d78e" style="animation-delay:0.35s"/>
-    <circle class="pulse" cx="1040" cy="150" r="4.5" fill="#f5d78e" style="animation-delay:0.7s"/>
-    <circle class="pulse" cx="1120" cy="150" r="4.5" fill="#f5d78e" style="animation-delay:1.05s"/>
+    <!-- ============ SCENE (right, x 480-1140) ============ -->
+    <g class="enter e5">
 
-    <!-- left accent rule -->
-    <rect x="60" y="52" width="3" height="96" rx="1.5" fill="#d99b1c"/>
+      <!-- conveyor track -->
+      <line x1="480" y1="160" x2="806" y2="160" stroke="#f5d78e" stroke-opacity="0.15" stroke-width="2"/>
+      <line class="flow" x1="480" y1="160" x2="806" y2="160" stroke="#d99b1c" stroke-opacity="0.55" stroke-width="2" stroke-dasharray="5 9"/>
 
-    <g class="rise">
-      <text class="ink tag" x="80" y="66">SHADOWFOX TASK 2 - CLASSIFICATION</text>
-    </g>
-    <g class="rise" style="animation-delay:0.12s">
-      <text class="ink title" x="79" y="110">Loan Approval Prediction</text>
-    </g>
-    <g class="rise" style="animation-delay:0.26s">
-      <text class="ink sub" x="80" y="140">Random forest over 614 loan applications with label-encoded categoricals</text>
-    </g>
+      <!-- incoming application cards -->
+      <g class="cIn cIn1">
+        <rect x="480" y="147" width="36" height="26" rx="5" fill="#1c212b" stroke="#f5d78e" stroke-opacity="0.5"/>
+        <line x1="487" y1="156" x2="507" y2="156" stroke="#f5d78e" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round"/>
+        <line x1="487" y1="164" x2="499" y2="164" stroke="#f5d78e" stroke-opacity="0.4" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <g class="cIn cIn2">
+        <rect x="480" y="147" width="36" height="26" rx="5" fill="#1c212b" stroke="#f5d78e" stroke-opacity="0.5"/>
+        <line x1="487" y1="156" x2="507" y2="156" stroke="#f5d78e" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round"/>
+        <line x1="487" y1="164" x2="499" y2="164" stroke="#f5d78e" stroke-opacity="0.4" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <g class="cIn cIn3">
+        <rect x="480" y="147" width="36" height="26" rx="5" fill="#1c212b" stroke="#f5d78e" stroke-opacity="0.5"/>
+        <line x1="487" y1="156" x2="507" y2="156" stroke="#f5d78e" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round"/>
+        <line x1="487" y1="164" x2="499" y2="164" stroke="#f5d78e" stroke-opacity="0.4" stroke-width="2" stroke-linecap="round"/>
+      </g>
 
-    <g class="rise" style="animation-delay:0.45s">
-      <rect x="60" y="196" width="131" height="58" rx="10" fill="#ffffff" fill-opacity="0.045" stroke="#d99b1c" stroke-opacity="0.28"/>
-      <text class="ink val" x="81" y="222">614</text>
-      <text class="ink lab" x="81" y="241">applications</text>
-    </g>
-    <g class="rise" style="animation-delay:0.56s">
-      <rect x="205" y="196" width="138" height="58" rx="10" fill="#ffffff" fill-opacity="0.045" stroke="#d99b1c" stroke-opacity="0.28"/>
-      <text class="ink val" x="226" y="222">78.05 %</text>
-      <text class="ink lab" x="226" y="241">test accuracy</text>
-    </g>
-    <g class="rise" style="animation-delay:0.67s">
-      <rect x="357" y="196" width="168" height="58" rx="10" fill="#ffffff" fill-opacity="0.045" stroke="#d99b1c" stroke-opacity="0.28"/>
-      <text class="ink val" x="378" y="222">68.73 %</text>
-      <text class="ink lab" x="378" y="241">majority baseline</text>
-    </g>
-    <g class="rise" style="animation-delay:0.78s">
-      <rect x="539" y="196" width="101" height="58" rx="10" fill="#ffffff" fill-opacity="0.045" stroke="#d99b1c" stroke-opacity="0.28"/>
-      <text class="ink val" x="560" y="222">11</text>
-      <text class="ink lab" x="560" y="241">features</text>
+      <!-- mini random forest (behind diamond): three voting trees -->
+      <g class="haloG" opacity="0"><circle cx="798" cy="102" r="15" fill="#34d17b" filter="url(#soft)"/></g>
+      <g class="haloR" opacity="0"><circle cx="838" cy="90" r="15" fill="#e26d6d" filter="url(#soft)"/></g>
+      <g class="haloG" opacity="0"><circle cx="878" cy="102" r="15" fill="#34d17b" filter="url(#soft)"/></g>
+      <g class="haloR" opacity="0"><circle cx="878" cy="102" r="15" fill="#e26d6d" filter="url(#soft)"/></g>
+      <g class="tree t1" fill="#222834" stroke="#d99b1c" stroke-opacity="0.45">
+        <rect x="796" y="116" width="4" height="8"/>
+        <path d="M798 84 L810 104 L786 104 Z"/>
+        <path d="M798 94 L813 116 L783 116 Z"/>
+      </g>
+      <g class="tree t2" fill="#222834" stroke="#d99b1c" stroke-opacity="0.45">
+        <rect x="836" y="104" width="4" height="8"/>
+        <path d="M838 72 L850 92 L826 92 Z"/>
+        <path d="M838 82 L853 104 L823 104 Z"/>
+      </g>
+      <g class="tree t3" fill="#222834" stroke="#d99b1c" stroke-opacity="0.45">
+        <rect x="876" y="116" width="4" height="8"/>
+        <path d="M878 84 L890 104 L866 104 Z"/>
+        <path d="M878 94 L893 116 L863 116 Z"/>
+      </g>
+
+      <!-- fork paths -->
+      <path d="M852 150 C 930 132 1000 106 1128 94" fill="none" stroke="#34d17b" stroke-opacity="0.12" stroke-width="4"/>
+      <path class="flow" d="M852 150 C 930 132 1000 106 1128 94" fill="none" stroke="#34d17b" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="5 9"/>
+      <path d="M852 170 C 930 188 1000 214 1128 226" fill="none" stroke="#e26d6d" stroke-opacity="0.12" stroke-width="4"/>
+      <path class="flow" d="M852 170 C 930 188 1000 214 1128 226" fill="none" stroke="#e26d6d" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="5 9"/>
+
+      <!-- comets: one bright pulse per resolved card -->
+      <path class="comet cmA" d="M852 150 C 930 132 1000 106 1128 94" fill="none" stroke="#34d17b" stroke-width="3" stroke-linecap="round" stroke-dasharray="40 360" stroke-dashoffset="40"/>
+      <path class="comet cmB" d="M852 170 C 930 188 1000 214 1128 226" fill="none" stroke="#e26d6d" stroke-width="3" stroke-linecap="round" stroke-dasharray="40 360" stroke-dashoffset="40"/>
+      <path class="comet cmC" d="M852 150 C 930 132 1000 106 1128 94" fill="none" stroke="#34d17b" stroke-width="3" stroke-linecap="round" stroke-dasharray="40 360" stroke-dashoffset="40"/>
+
+      <!-- terminal nodes -->
+      <circle class="node" cx="1128" cy="94" r="5" fill="#34d17b"/>
+      <circle class="node" cx="1128" cy="226" r="5" fill="#e26d6d"/>
+      <text class="mono" x="1136" y="78" font-size="10" letter-spacing="1.5" fill="#34d17b" text-anchor="end" opacity="0.85">APPROVED</text>
+      <text class="mono" x="1136" y="248" font-size="10" letter-spacing="1.5" fill="#e26d6d" text-anchor="end" opacity="0.85">REJECTED</text>
+
+      <!-- decision diamond -->
+      <g transform="translate(840 160)">
+        <circle class="dRing" r="26" fill="none" stroke="#d99b1c" stroke-width="2" opacity="0"/>
+        <g transform="rotate(45)">
+          <rect class="dCore" x="-19" y="-19" width="38" height="38" rx="6" fill="url(#dGrad)" stroke="#d99b1c" stroke-width="1.5"/>
+        </g>
+        <path d="M-10 0 H-2 M-2 0 L8 -7 M-2 0 L8 7" fill="none" stroke="#f5d78e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+
+      <!-- verdict flip under diamond -->
+      <text class="mono txtA" x="840" y="209" font-size="11" letter-spacing="2" fill="#34d17b" text-anchor="middle">APPROVE</text>
+      <text class="mono txtR" x="840" y="209" font-size="11" letter-spacing="2" fill="#e26d6d" text-anchor="middle">REJECT</text>
+
+      <!-- outgoing card: beat A, approved (upper) -->
+      <g transform="translate(862 142)">
+        <g class="outGo outA">
+          <rect x="-15" y="-11" width="30" height="22" rx="4" fill="#1c212b" stroke="#34d17b" stroke-opacity="0.6"/>
+          <line x1="-9" y1="-3" x2="7" y2="-3" stroke="#f5d78e" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round"/>
+          <line x1="-9" y1="4" x2="1" y2="4" stroke="#f5d78e" stroke-opacity="0.35" stroke-width="2" stroke-linecap="round"/>
+          <circle class="bRing bA" cx="13" cy="-9" r="9" fill="none" stroke="#34d17b" stroke-width="1.5" opacity="0"/>
+          <g class="badge bA">
+            <circle cx="13" cy="-9" r="7.5" fill="#34d17b"/>
+            <path d="M9.5 -9 L12 -6.5 L16.5 -11.5" fill="none" stroke="#0d1117" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- outgoing card: beat B, rejected (lower) -->
+      <g transform="translate(862 178)">
+        <g class="outGo outB">
+          <rect x="-15" y="-11" width="30" height="22" rx="4" fill="#1c212b" stroke="#e26d6d" stroke-opacity="0.6"/>
+          <line x1="-9" y1="-3" x2="7" y2="-3" stroke="#f5d78e" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round"/>
+          <line x1="-9" y1="4" x2="1" y2="4" stroke="#f5d78e" stroke-opacity="0.35" stroke-width="2" stroke-linecap="round"/>
+          <circle class="bRing bB" cx="13" cy="-9" r="9" fill="none" stroke="#e26d6d" stroke-width="1.5" opacity="0"/>
+          <g class="badge bB">
+            <circle cx="13" cy="-9" r="7.5" fill="#e26d6d"/>
+            <path d="M10.5 -11.5 L15.5 -6.5 M15.5 -11.5 L10.5 -6.5" fill="none" stroke="#0d1117" stroke-width="2" stroke-linecap="round"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- outgoing card: beat C, approved (upper) -->
+      <g transform="translate(862 142)">
+        <g class="outGo outC">
+          <rect x="-15" y="-11" width="30" height="22" rx="4" fill="#1c212b" stroke="#34d17b" stroke-opacity="0.6"/>
+          <line x1="-9" y1="-3" x2="7" y2="-3" stroke="#f5d78e" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round"/>
+          <line x1="-9" y1="4" x2="1" y2="4" stroke="#f5d78e" stroke-opacity="0.35" stroke-width="2" stroke-linecap="round"/>
+          <circle class="bRing bC" cx="13" cy="-9" r="9" fill="none" stroke="#34d17b" stroke-width="1.5" opacity="0"/>
+          <g class="badge bC">
+            <circle cx="13" cy="-9" r="7.5" fill="#34d17b"/>
+            <path d="M9.5 -9 L12 -6.5 L16.5 -11.5" fill="none" stroke="#0d1117" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </g>
+      </g>
+
     </g>
   </g>
-  <rect x="0.5" y="0.5" width="1199" height="299" rx="16" fill="none" stroke="#d99b1c" stroke-opacity="0.22"/>
+  <!-- border on top -->
+  <rect x="2" y="2" width="1196" height="296" rx="16" fill="none" stroke="#d99b1c" stroke-opacity="0.2" stroke-width="1.5"/>
 </svg>
