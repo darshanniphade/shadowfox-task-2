@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="Loan Approval Prediction - Random forest over 614 loan applications with label-encoded categoricals">
+  <title>Loan Approval Prediction</title>
+
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14181f"/>
+      <stop offset="0.55" stop-color="#1a1a19"/>
+      <stop offset="1" stop-color="#101319"/>
+    </linearGradient>
+    <linearGradient id="streamFade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"    stop-color="#d99b1c" stop-opacity="0"/>
+      <stop offset="0.18" stop-color="#d99b1c" stop-opacity="0.85"/>
+      <stop offset="0.75" stop-color="#f5d78e" stop-opacity="0.95"/>
+      <stop offset="1"    stop-color="#f5d78e" stop-opacity="1"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f5d78e" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#f5d78e" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="card"><rect width="1200" height="300" rx="16"/></clipPath>
+  </defs>
+
+  <style>
+    .ink   { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    .title { font-size: 44px; font-weight: 700; fill: #ffffff; letter-spacing: -0.5px; }
+    .sub   { font-size: 16.5px; font-weight: 400; fill: #c3c2b7; }
+    .tag   { font-size: 12.5px; font-weight: 600; fill: #f5d78e; letter-spacing: 1.6px; }
+    .val   { font-size: 19px; font-weight: 700; fill: #ffffff; }
+    .lab   { font-size: 11px; font-weight: 500; fill: #898781; letter-spacing: 0.3px; }
+
+    .stream {
+      fill: none; stroke: url(#streamFade); stroke-width: 1.6; stroke-linecap: round;
+      stroke-dasharray: 7 26; animation: flow 3.2s linear infinite;
+    }
+    @keyframes flow { to { stroke-dashoffset: -330; } }
+
+    .rise { opacity: 0; animation: rise 0.9s cubic-bezier(.2,.7,.3,1) forwards; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .pulse { animation: pulse 3.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.35; transform: scale(0.82); }
+      50%      { opacity: 1;    transform: scale(1.12); }
+    }
+
+    .blink { animation: blink 3.2s ease-in-out infinite; }
+    @keyframes blink { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stream { animation: none; stroke-dasharray: none; stroke-opacity: 0.55; }
+      .rise   { animation: none; opacity: 1; }
+      .pulse  { animation: none; opacity: 0.9; }
+      .blink  { animation: none; opacity: 0.9; }
+    }
+  </style>
+
+  <g clip-path="url(#card)">
+    <rect width="1200" height="300" fill="url(#surface)"/>
+    <circle cx="1035" cy="150" r="200" fill="url(#glow)" class="blink"/>
+
+    <!-- animated flow lines -->
+    <path class="stream" d="M0 96 C 300 96, 420 62, 760 62 S 1010 96, 1200 96"/>
+    <path class="stream" style="animation-duration:4.1s" d="M0 150 C 340 150, 470 150, 780 150 S 1030 150, 1200 150"/>
+    <path class="stream" style="animation-duration:2.7s" d="M0 206 C 300 206, 420 240, 760 240 S 1010 206, 1200 206"/>
+
+    <circle class="pulse" cx="880" cy="150" r="4.5" fill="#f5d78e" style="animation-delay:0s"/>
+    <circle class="pulse" cx="960" cy="150" r="4.5" fill="#f5d78e" style="animation-delay:0.35s"/>
+    <circle class="pulse" cx="1040" cy="150" r="4.5" fill="#f5d78e" style="animation-delay:0.7s"/>
+    <circle class="pulse" cx="1120" cy="150" r="4.5" fill="#f5d78e" style="animation-delay:1.05s"/>
+
+    <!-- left accent rule -->
+    <rect x="60" y="52" width="3" height="96" rx="1.5" fill="#d99b1c"/>
+
+    <g class="rise">
+      <text class="ink tag" x="80" y="66">SHADOWFOX TASK 2 - CLASSIFICATION</text>
+    </g>
+    <g class="rise" style="animation-delay:0.12s">
+      <text class="ink title" x="79" y="110">Loan Approval Prediction</text>
+    </g>
+    <g class="rise" style="animation-delay:0.26s">
+      <text class="ink sub" x="80" y="140">Random forest over 614 loan applications with label-encoded categoricals</text>
+    </g>
+
+    <g class="rise" style="animation-delay:0.45s">
+      <rect x="60" y="196" width="131" height="58" rx="10" fill="#ffffff" fill-opacity="0.045" stroke="#d99b1c" stroke-opacity="0.28"/>
+      <text class="ink val" x="81" y="222">614</text>
+      <text class="ink lab" x="81" y="241">applications</text>
+    </g>
+    <g class="rise" style="animation-delay:0.56s">
+      <rect x="205" y="196" width="138" height="58" rx="10" fill="#ffffff" fill-opacity="0.045" stroke="#d99b1c" stroke-opacity="0.28"/>
+      <text class="ink val" x="226" y="222">78.05 %</text>
+      <text class="ink lab" x="226" y="241">test accuracy</text>
+    </g>
+    <g class="rise" style="animation-delay:0.67s">
+      <rect x="357" y="196" width="168" height="58" rx="10" fill="#ffffff" fill-opacity="0.045" stroke="#d99b1c" stroke-opacity="0.28"/>
+      <text class="ink val" x="378" y="222">68.73 %</text>
+      <text class="ink lab" x="378" y="241">majority baseline</text>
+    </g>
+    <g class="rise" style="animation-delay:0.78s">
+      <rect x="539" y="196" width="101" height="58" rx="10" fill="#ffffff" fill-opacity="0.045" stroke="#d99b1c" stroke-opacity="0.28"/>
+      <text class="ink val" x="560" y="222">11</text>
+      <text class="ink lab" x="560" y="241">features</text>
+    </g>
+  </g>
+  <rect x="0.5" y="0.5" width="1199" height="299" rx="16" fill="none" stroke="#d99b1c" stroke-opacity="0.22"/>
+</svg>
